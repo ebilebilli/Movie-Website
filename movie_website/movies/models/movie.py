@@ -3,10 +3,10 @@ from django.utils.text import slugify
 
 from relations.models.category import Category
 
+
 __all__ =[
     'Movie',
 ]
-
 
 class Movie(models.Model):
 

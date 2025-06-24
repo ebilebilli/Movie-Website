@@ -7,7 +7,6 @@ __all__ = [
     'MovieSerializer',
 ]
 
-
 class MovieSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(read_only=True)
 

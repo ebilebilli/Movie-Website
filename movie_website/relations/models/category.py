@@ -5,7 +5,6 @@ __all__ = [
     'Category',
 ]
 
-
 class Category(models.Model):
     title = models.CharField(
         max_length=30,

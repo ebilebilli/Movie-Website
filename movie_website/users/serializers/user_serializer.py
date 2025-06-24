@@ -8,7 +8,6 @@ __all__ = [
     'CustomerUserSerializer',
 ]
 
-
 class CustomerUserSerializer(serializers.ModelSerializer):
 
     class Meta:
