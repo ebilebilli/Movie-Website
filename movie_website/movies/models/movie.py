@@ -27,7 +27,7 @@ class Movie(models.Model):
     actors = models.ManyToManyField(
         Actor,
         related_name='movies',
-        verbose_name='Actors'
+        verbose_name='Actors',
         null=True,
         blank=True
         )
