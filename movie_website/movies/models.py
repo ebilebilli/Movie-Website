@@ -1,3 +1,49 @@
 from django.db import models
+from django.utils.text import slugify
 
-# Create your models here.
+
+class Movie(models.Model):
+    title = models.CharField(
+        max_length=30,
+        verbose_name='Movie name'
+        )
+    description = models.TextField(
+        max_length=255,
+        verbose_name='Description'
+        )
+    release_date = models.DateField(
+        verbose_name='Release date'
+        )
+    duration = models.PositiveIntegerField(
+        verbose_name='Duration in minutes'
+        )
+    rating = models.FloatField(
+        verbose_name='Rating',
+        )
+    poster = models.ImageField(
+        upload_to='posters/',
+        verbose_name='Poster' 
+        )
+    trailer_url = models.URLField(
+        verbose_name='Trailer url',
+        null=True, 
+        blank=True
+        )
+    created_at = models.DateTimeField(
+        auto_now_add=True
+        )
+    updated_at = models.DateTimeField(
+        auto_now=True
+        )
+    slug = models.SlugField(
+        unique=True, 
+        blank=True
+        )
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title

@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+__all__ = [
+    'CustomerUser',
+]
+
 class CustomerUser(AbstractUser):
     email = models.EmailField(
         unique=True,

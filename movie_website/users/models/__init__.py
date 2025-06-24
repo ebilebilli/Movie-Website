@@ -1,1 +1,1 @@
-from .customeruser import CustomerUser
+from .user import CustomerUser

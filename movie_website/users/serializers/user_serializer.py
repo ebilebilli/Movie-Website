@@ -1,7 +1,12 @@
 from PIL import Image
 from rest_framework import serializers
 
-from models.customeruser import CustomerUser
+from movie_website.users.models.user import CustomerUser
+
+
+__all__ = [
+    'CustomerUserSerializer',
+]
 
 
 class CustomerUserSerializer(serializers.ModelSerializer):
