@@ -2,6 +2,10 @@ from django.db import models
 from django.utils.text import slugify
 
 
+__all__ =[
+    'Movie',
+]
+
 class Movie(models.Model):
     title = models.CharField(
         max_length=30,
