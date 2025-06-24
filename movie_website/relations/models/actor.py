@@ -2,17 +2,17 @@ from django.db import models
 
 
 __all__ = [
-    'Director',
+    'Actor',
 ]
 
-class Director(models.Model):
+class Actor(models.Model):
     name = models.CharField(
         max_length=30,
-        verbose_name='Director name'
+        verbose_name='Actor name'
         )
     picture = models.ImageField(
-        upload_to='director_pictures/',
-        verbose_name='Director picture',
+        upload_to='actor_pictures/',
+        verbose_name='Actor picture',
         null=True,
         blank=True
     )
