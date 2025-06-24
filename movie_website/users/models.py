@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
-class CustomeUser(models.Model):
+class CustomerUser(models.Model):
     email = models.EmailField(
         unique=True,
         verbose_name='Email'  
@@ -16,6 +17,14 @@ class CustomeUser(models.Model):
         )
     bio = models.TextField(
         max_length=250,
-        verbose_name='Bio'
-    )
+        verbose_name='Bio',
+        null=True,
+        blank=True
+        )
+    profile_images = models.ImageField(
+        upload_to='profile_images',
+        verbose_name='Profile image',
+        null=True,
+        blank=True
+        )
      
