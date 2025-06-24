@@ -21,7 +21,7 @@ class CustomerUser(models.Model):
         null=True,
         blank=True
         )
-    profile_images = models.ImageField(
+    profile_image = models.ImageField(
         upload_to='profile_images',
         verbose_name='Profile image',
         null=True,
