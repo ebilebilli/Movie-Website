@@ -3,6 +3,7 @@ from django.utils.text import slugify
 
 from relations.models.category import Category
 from relations.models.director import Director
+from relations.models.actor import Actor
 
 
 __all__ =[
@@ -10,15 +11,23 @@ __all__ =[
 ]
 
 class Movie(models.Model):
-    category = models.ManyToManyField(
+    categories = models.ManyToManyField(
         Category,
         related_name='movies',
-        verbose_name='Category'
+        verbose_name='Categories'
         )
     director = models.ForeignKey(
         Director,
         on_delete=models.PROTECT,
         verbose_name='Director',
+        related_name='movies',
+        null=True,
+        blank=True
+        )
+    actors = models.ManyToManyField(
+        Actor,
+        related_name='movies',
+        verbose_name='Actors'
         null=True,
         blank=True
         )
