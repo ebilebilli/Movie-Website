@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
+from relations.models.category import Category
 
 __all__ =[
     'Movie',
@@ -8,6 +9,13 @@ __all__ =[
 
 
 class Movie(models.Model):
+
+    category = models.ManyToManyField(
+        Category,
+        related_name='movies',
+        verbose_name='Category'
+    )
+
     title = models.CharField(
         max_length=30,
         verbose_name='Movie name'
