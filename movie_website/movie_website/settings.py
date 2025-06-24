@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     #Apps
-    'categories',
+    'relations',
     'movies',
     'users',
     'interactions',
