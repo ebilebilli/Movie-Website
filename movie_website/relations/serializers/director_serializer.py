@@ -8,7 +8,8 @@ __all__ = [
 ]
 
 class DirectorSerializer(serializers.ModelSerializer):
-
+    picture = serializers.ImageField(use_url=True)
+    
     class Meta:
         model = Director
         fields = '__all__'

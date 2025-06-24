@@ -10,6 +10,7 @@ __all__ = [
 
 class CategorySerializer(serializers.ModelSerializer):
     movie_count = serializers.SerializerMethodField()
+    picture = serializers.ImageField(use_url=True)
 
     class Meta:
         model = Category

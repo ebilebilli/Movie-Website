@@ -13,8 +13,8 @@ __all__ =[
 class Movie(models.Model):
     categories = models.ManyToManyField(
         Category,
-        related_name='movies',
-        verbose_name='Categories'
+        verbose_name='Categories',
+        related_name='movies'
         )
     director = models.ForeignKey(
         Director,
@@ -26,8 +26,8 @@ class Movie(models.Model):
         )
     actors = models.ManyToManyField(
         Actor,
-        related_name='movies',
         verbose_name='Actors',
+        related_name='movies',
         null=True,
         blank=True
         )

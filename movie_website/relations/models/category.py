@@ -10,5 +10,6 @@ class Category(models.Model):
         max_length=30,
         verbose_name='Category name'
         )
-    
-    
+
+    def __str__(self):
+        return self.title
