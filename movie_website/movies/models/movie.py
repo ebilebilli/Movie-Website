@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils.text import slugify
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from relations.models.category import Category
 from relations.models.director import Director
 from relations.models.actor import Actor
+from utils.validators import release_date_validator
 
 
 __all__ =[
@@ -41,13 +43,15 @@ class Movie(models.Model):
         verbose_name='Description'
         )
     release_date = models.DateField(
-        verbose_name='Release date'
+        verbose_name='Release date',
+        validators=[release_date_validator]
         )
     duration = models.PositiveIntegerField(
         verbose_name='Duration in minutes'
         )
     rating = models.FloatField(
         verbose_name='Rating',
+        validators=[MinValueValidator(0), MaxValueValidator(10)]
         )
     poster = models.ImageField(
         upload_to='posters/',
@@ -68,6 +72,9 @@ class Movie(models.Model):
         unique=True, 
         blank=True
         )
+    
+    class Meta:
+        verbose_name_plural = 'Movies'
     
     def save(self, *args, **kwargs):
         if not self.slug:

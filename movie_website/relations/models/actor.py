@@ -16,6 +16,9 @@ class Actor(models.Model):
         null=True,
         blank=True
     )
+
+    class Meta:
+        verbose_name_plural = 'Actors'
     
     def __str__(self):
         return self.name

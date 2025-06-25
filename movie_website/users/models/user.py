@@ -17,7 +17,9 @@ class CustomerUser(AbstractUser):
         verbose_name='Username'
         )
     birthday = models.DateField(
-        verbose_name='Birthday'
+        verbose_name='Birthday',
+        null=True,
+        blank=True
         )
     bio = models.TextField(
         max_length=250,
