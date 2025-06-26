@@ -16,7 +16,7 @@ class CustomerUserSerializer(serializers.ModelSerializer):
 
     def validate_profile_image(self, image):
         valid_formats = ['JPEG', 'JPG', 'PNG']
-        max_size = 2 * 1024 * 1024  # 2 MB
+        max_size = 2 * 1024 * 1024  
 
         if image.size > max_size:
             raise serializers.ValidationError('Image size should not exceed 2 MB.')

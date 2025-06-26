@@ -19,6 +19,12 @@ class Like(models.Model):
         on_delete=models.CASCADE,
         verbose_name='comment',
         related_name='likes'
-    )
+        )
+
+    class Meta:
+        verbose_name_plural  = 'Likes'
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user} liked comment {self.comment.id}'

@@ -22,7 +22,7 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Movie',
         related_name='comments'
-    )
+        )
     parent = models.ForeignKey(
         'self',
         on_delete=models.SET_NULL,
@@ -30,7 +30,7 @@ class Comment(models.Model):
         blank=True,
         verbose_name='Parent',
         related_name='replies'
-    )
+        )
 
     text = models.TextField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
