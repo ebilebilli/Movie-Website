@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from utils.validators import validate_birthday
+
 
 __all__ = [
     'CustomerUser',
@@ -18,6 +20,7 @@ class CustomerUser(AbstractUser):
         )
     birthday = models.DateField(
         verbose_name='Birthday',
+        validators=[validate_birthday],
         null=True,
         blank=True
         )

@@ -39,7 +39,7 @@ class Comment(models.Model):
             raise ValidationError('Reply comment must be for the same movie as the parent comment')
 
     def __str__(self):
-        return f'{self.user} comment in movie: {self.movie}'
+        return self.text
         
  
     
