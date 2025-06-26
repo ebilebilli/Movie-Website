@@ -8,8 +8,11 @@ __all__ = [
 ]
 
 class CommentSerializer(serializers.ModelSerializer):
-    picture = serializers.ImageField(use_url=True)
+    like_count = serializers.SerializerMethodField
 
     class Meta:
         model = Comment
         fields = '__all__'
+
+    def get_likes(self, obj):
+        return obj.like_count

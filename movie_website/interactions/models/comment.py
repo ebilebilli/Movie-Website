@@ -3,12 +3,12 @@ from django.core.exceptions import ValidationError
 
 from users.models.user import CustomerUser
 from movies.models.movie import Movie
+from .like import Like
 
 
 __all__ = [
     'Comment',
 ]
-
 
 class Comment(models.Model):
     user = models.ForeignKey(
@@ -38,6 +38,10 @@ class Comment(models.Model):
 
     class Meta:
         verbose_name_plural  = 'Comments'
+
+    @property
+    def like_count(self):
+        return Like.objects.filter(user=self).count()
     
     def clean(self):
         if self.parent and self.parent.movie != self.movie:
