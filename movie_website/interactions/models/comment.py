@@ -5,6 +5,11 @@ from users.models.user import CustomerUser
 from movies.models.movie import Movie
 
 
+__all__ = [
+    'Comment',
+]
+
+
 class Comment(models.Model):
     user = models.ForeignKey(
         CustomerUser, 
