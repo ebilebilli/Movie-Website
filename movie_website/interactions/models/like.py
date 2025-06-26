@@ -1,7 +1,6 @@
 from django.db import models
 
 from users.models.user import CustomerUser
-from .comment import Comment
 
 
 __all__ = [
@@ -11,12 +10,12 @@ __all__ = [
 class Like(models.Model):
     user = models.ForeignKey(
         CustomerUser, 
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         verbose_name='User',
         related_name='likes'
         )
     comment = models.ForeignKey(
-        Comment,
+       'interactions.Comment',  
         on_delete=models.CASCADE,
         verbose_name='comment',
         related_name='likes'
