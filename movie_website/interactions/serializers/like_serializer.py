@@ -8,7 +8,6 @@ __all__ = [
 ]
 
 class LikeSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Like
         fields = ['id', 'comment', 'created_at']
