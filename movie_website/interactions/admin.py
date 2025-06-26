@@ -5,7 +5,7 @@ from interactions.models.like import Like
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'movie', 'parent', 'short_text', 'created_at')
+    list_display = ('id', 'user', 'movie', 'parent', 'short_text', 'like_count', 'created_at')
     list_filter = ('movie', 'user', 'created_at')
     search_fields = ('text', 'user__username', 'movie__title')
     autocomplete_fields = ('user', 'movie', 'parent')
@@ -15,6 +15,9 @@ class CommentAdmin(admin.ModelAdmin):
         return (obj.text[:50] + '...') if len(obj.text) > 50 else obj.text
     short_text.short_description = 'Text'
 
+    def like_count(self, obj):
+        return obj.like_count
+    like_count.short_description = 'Likes'
 
 @admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
