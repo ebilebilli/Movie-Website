@@ -41,7 +41,7 @@ class Comment(models.Model):
 
     @property
     def like_count(self):
-        return Like.objects.filter(user=self).count()
+        return Like.objects.filter(comment=self).count()
     
     def clean(self):
         if self.parent and self.parent.movie != self.movie:
