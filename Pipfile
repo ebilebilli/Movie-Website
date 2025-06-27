@@ -49,6 +49,8 @@ wcwidth = "==0.2.13"
 dj-rest-auth = "*"
 django-allauth = "*"
 cryptography = "*"
+django-extensions = "*"
+google-auth = "*"
 
 [dev-packages]
 
