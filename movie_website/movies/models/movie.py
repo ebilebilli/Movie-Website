@@ -30,8 +30,6 @@ class Movie(models.Model):
         Actor,
         verbose_name='Actors',
         related_name='movies',
-        null=True,
-        blank=True
         )
 
     title = models.CharField(
