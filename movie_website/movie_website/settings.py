@@ -29,6 +29,10 @@ SECRET_KEY = 'django-insecure-9+gre@le$e9vk2bc_xhnm3pcoc(%jdvk7rhohp1qly$26qx%ix
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',
+]
+
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'users.CustomerUser'
@@ -71,6 +75,7 @@ SITE_ID = 1
 
 
 MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -183,4 +188,4 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         }
     }
-}
+} 
