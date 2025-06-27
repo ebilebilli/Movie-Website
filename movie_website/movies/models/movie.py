@@ -55,6 +55,10 @@ class Movie(models.Model):
         upload_to='posters/',
         verbose_name='Poster' 
         )
+    video = models.FileField(
+        upload_to='videos/',
+        verbose_name='Video',
+        )
     trailer_url = models.URLField(
         verbose_name='Trailer url',
         null=True, 
