@@ -22,6 +22,7 @@ class Watchlist(models.Model):
 
     class Meta:
         verbose_name_plural  = 'Watchlists'
+        unique_together = ('user', 'movie')
     
     def __str__(self):
         return f'{self.user} added movie: {self.movie.id} to watchlist'
