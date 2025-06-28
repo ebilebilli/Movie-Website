@@ -38,7 +38,7 @@ class Comment(models.Model):
 
     class Meta:
         verbose_name_plural  = 'Comments'
-        ordering = ('-created_at')
+        ordering = ('-created_at',)
 
     @property
     def like_count(self):

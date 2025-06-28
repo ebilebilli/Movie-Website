@@ -24,7 +24,7 @@ class Like(models.Model):
     class Meta:
         verbose_name_plural  = 'Likes'
         unique_together = ('user', 'comment')
-        ordering = ('-created_at')
+        ordering = ('-created_at',)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
