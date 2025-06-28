@@ -77,6 +77,7 @@ class Movie(models.Model):
     
     class Meta:
         verbose_name_plural = 'Movies'
+        ordering = ('-created_at')
     
     def save(self, *args, **kwargs):
         if not self.slug:
