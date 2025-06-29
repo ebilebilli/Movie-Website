@@ -7,12 +7,14 @@ from movie_website.users.models.user import CustomerUser
 
 __all__ = [
     'CustomerUserSerializer',
+    'CustomerUserProfileDetail',
+    'ProfileUpdateSerializer'
 ]
 
 class CustomerUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomerUser
-        fields = '__all__'
+        exclude = ['id', 'bio', 'email', 'birthday']
 
     def validate_profile_image(self, image):
         valid_formats = ['JPEG', 'JPG', 'PNG']
@@ -29,7 +31,13 @@ class CustomerUserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Invalid image file')
 
         return image
-    
+
+ 
+class CustomerUserProfileDetail(serializers.ModelSerializer):
+    class Meta:
+        model = CustomerUser
+        fields = '__all__'
+
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
