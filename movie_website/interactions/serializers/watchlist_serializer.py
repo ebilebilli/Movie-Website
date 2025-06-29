@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from models.watchlist import Watchlist
+from movies.serializers.movie_serializer import MovieSerializer
 
 
 __all__ = [
@@ -8,8 +9,8 @@ __all__ = [
 ]
 
 class WatchlistSerializer(serializers.ModelSerializer):
-    like_count = serializers.SerializerMethodField()
-
+    movie = MovieSerializer()
+    
     class Meta:
         model = Watchlist
         fields = ['id',]
