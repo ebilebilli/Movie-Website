@@ -47,18 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Google Sign-In  packages
-    'django.contrib.sites',
+    # Third party apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'dj_rest_auth',
-    'dj_rest_auth.registration',
-    'rest_framework.authtoken', 
-    'django_extensions', 
-
-    # Third party apps
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
@@ -69,9 +62,7 @@ INSTALLED_APPS = [
     'movies',
     'users',
     'interactions',
-    
 ]
-SITE_ID = 1
 
 
 MIDDLEWARE = [
@@ -169,23 +160,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Google Sign-In  settings
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'APP': {
-            'client_id': os.getenv('CLIENT_ID'),
-            'secret': os.getenv('SECRET'),
-            'key': ''
-        },
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-} 
+GOOGLE_OAUTH_CLIENT_ID = os.environ.get('GOOGLE_OAUTH_CLIENT_ID')
+if not GOOGLE_OAUTH_CLIENT_ID:
+    raise ValueError('GOOGLE_OAUTH_CLIENT_ID is missing.''Have you put it in a file at core/.env ?')
+
+SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"

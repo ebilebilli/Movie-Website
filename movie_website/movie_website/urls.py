@@ -7,6 +7,7 @@ from movie_website.settings import MEDIA_URL, MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('apis.user_apis.urls'),name='user_apis'),
 ]
 
 
