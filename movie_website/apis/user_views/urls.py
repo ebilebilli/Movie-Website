@@ -1,5 +1,5 @@
 from django.urls import path
-from apis.user_apis.google_views import *
+from apis.user_views.google_views import *
 
 
 app_name = 'user_apis'
