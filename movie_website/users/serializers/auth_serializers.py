@@ -39,3 +39,24 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+class LoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField(required=True, write_only=True)
+
+    def validate(self, data):
+        email = data.get('email')
+        password = data.get('password')
+
+        try:
+            user = CustomerUser.objects.get(email=email)
+        except CustomerUser.DoesNotExist:
+            raise serializers.ValidationError({'email': 'There is no user with this email.'})
+        
+        if not user.check_password(password):
+            raise serializers.ValidationError({'password': 'Wrong password'})
+        
+        data['user'] = user
+        
+        return data
