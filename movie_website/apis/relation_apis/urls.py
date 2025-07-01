@@ -49,7 +49,7 @@ urlpatterns = [
         ),
     path(
         'release_date/<int:release_date_id>/movies/', 
-        ReleaseDateListAPIView.as_view(), 
+        MoviesByReleaseDateAPIView.as_view(), 
         name='movies-by-release_date'
         ),
 ]   
