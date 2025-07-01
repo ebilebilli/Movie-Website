@@ -3,6 +3,7 @@ from django.urls import path
 from apis.relation_apis.category_views import *
 from apis.relation_apis.actor_views import *
 from apis.relation_apis.director_views import *
+from apis.relation_apis.release_date_views import *
 
 
 app_name = 'relation_apis'
@@ -40,5 +41,15 @@ urlpatterns = [
         'director/<int:director_id>/movies/', 
         MoviesByDirectorAPIView.as_view(), 
         name='movies-by-director'
+        ),
+    path(
+        'release_dates/', 
+        ReleaseDateListAPIView.as_view(), 
+        name='release_dates'
+        ),
+    path(
+        'release_date/<int:release_date_id>/movies/', 
+        ReleaseDateListAPIView.as_view(), 
+        name='movies-by-release_date'
         ),
 ]   
