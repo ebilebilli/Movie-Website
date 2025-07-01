@@ -4,33 +4,33 @@ from rest_framework.permissions import AllowAny
 
 from movies.models.movie import Movie
 from movies.serializers.movie_serializer import MovieSerializer
-from relations.models.category import Category
-from relations.serializers.category_serializer import CategorySerializer
+from relations.models.actor import Actor
+from relations.serializers.actor_serializer import ActorSerializer
 
 
 __all__ = [
-    'CategoryListAPIView',
-    'MoviesByCategoryAPIView'
+    'ActorDetailAPIView',
+    'MoviesByActorAPIView'
 ]
 
-class CategoryListAPIView(APIView):
+class ActorDetailAPIView(APIView):
     permission_classes = [AllowAny]
     http_method_names = ['get']
 
-    def get(self, request):
-        categories = Category.objects.all()
-        serializer = CategorySerializer(categories, many=True)
+    def get(self, request, actor_id):
+        actor = get_object_or_404(Actor, id=actor_id)
+        serializer = ActorSerializer(actor)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class MoviesByCategoryAPIView(APIView):
+class MoviesByActorAPIView(APIView):
     permission_classes = [AllowAny]
     http_method_names = ['get']
 
-    def get(self, request, category_id):
-        category = get_object_or_404(Category, id=category_id)
-        movies = Movie.objects.filter(categories=category, is_active=True)
+    def get(self, request, actor_id):
+        actor = get_object_or_404(Actor, id=actor_id)
+        movies = Movie.objects.filter(actors=actor, is_active=True)
         serializer = MovieSerializer(movies, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
