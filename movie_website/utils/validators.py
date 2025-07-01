@@ -1,13 +1,13 @@
+from django.core.validators import RegexValidator
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 from datetime import datetime, timedelta
 
    
-def release_date_validator(value):
-    today = timezone.now().date()
-
-    if value > today:
-        raise ValidationError('Relase date cannot greater than today')
+year_validator = RegexValidator(
+    regex=r'^(1888|18[89]\d|19\d{2}|20\d{2}|21\d{2}|22\d{2}|23\d{2}|24\d{2}|25\d{2})$',
+    message='Invalid date format'
+)
 
 
 def validate_birthday(value):

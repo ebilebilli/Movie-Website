@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from relations.models.category import Category
 from relations.models.director import Director
 from relations.models.actor import Actor
-from utils.validators import release_date_validator
+from relations.models.release_date import ReleaseDate
 
 
 __all__ =[
@@ -31,6 +31,11 @@ class Movie(models.Model):
         verbose_name='Actors',
         related_name='movies',
         )
+    release_date = models.ForeignKey(
+        ReleaseDate,
+        on_delete=models.PROTECT,
+        verbose_name='Release date'
+        )
 
     title = models.CharField(
         max_length=30,
@@ -39,10 +44,6 @@ class Movie(models.Model):
     description = models.TextField(
         max_length=255,
         verbose_name='Description'
-        )
-    release_date = models.DateField(
-        verbose_name='Release date',
-        validators=[release_date_validator]
         )
     duration = models.PositiveIntegerField(
         verbose_name='Duration in minutes'
@@ -75,6 +76,10 @@ class Movie(models.Model):
         blank=True
         )
     
+    is_active = models.BooleanField(
+        default=True
+        )
+
     class Meta:
         verbose_name_plural = 'Movies'
         ordering = ('-created_at',)
