@@ -12,7 +12,7 @@ urlpatterns = [
         name='movies'
         ),
     path(
-        'movies/<slug:slug>', 
+        'movies/<slug:slug>/', 
         MovieDetailAPIView.as_view(), 
         name='movie-detail'
         )  
