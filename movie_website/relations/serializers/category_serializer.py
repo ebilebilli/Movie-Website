@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models.category import Category
+from relations.models.category import Category
 
 
 __all__ = [
@@ -10,7 +10,6 @@ __all__ = [
 
 class CategorySerializer(serializers.ModelSerializer):
     movie_count = serializers.SerializerMethodField()
-    picture = serializers.ImageField(use_url=True)
 
     class Meta:
         model = Category

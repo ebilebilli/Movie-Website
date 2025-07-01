@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models.actor import Actor
+from relations.models.actor import Actor
 
 
 __all__ = [

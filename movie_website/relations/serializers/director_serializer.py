@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models.director import Director
+from relations.models.director import Director
 
 
 __all__ = [

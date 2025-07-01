@@ -30,7 +30,7 @@ class MoviesByCategoriesAPIView(APIView):
 
     def get(self, request, category_id):
         category = get_object_or_404(Category, id=category_id)
-        movies = Category.objects.filter(categories=category, is_active=True)
+        movies = Movie.objects.filter(categories=category, is_active=True)
         serializer = MovieSerializer(movies, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)

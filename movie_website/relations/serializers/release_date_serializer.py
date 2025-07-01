@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models.release_date import ReleaseDate
+from relations.models.release_date import ReleaseDate
 
 
 __all__ = [
