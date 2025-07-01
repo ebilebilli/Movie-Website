@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models.movie import Movie
+from movies.models.movie import Movie
 
 
 __all__ = [

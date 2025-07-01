@@ -19,7 +19,7 @@ class MovieListAPIView(APIView):
     pagination_class = CustomPagination
 
     def get(self, request):
-        movies = Movie.objects.filter(is_active=False)
+        movies = Movie.objects.filter(is_active=True)
         pagination = self.pagination_class()
         paginated_movies = pagination.paginate_queryset(movies, request)
         serializer = MovieSerializer(paginated_movies, many=True)

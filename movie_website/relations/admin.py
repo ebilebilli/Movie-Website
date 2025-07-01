@@ -3,6 +3,7 @@ from django.contrib import admin
 from relations.models.category import Category
 from relations.models.director import Director
 from relations.models.actor import Actor
+from relations.models.release_date import ReleaseDate
 
 
 @admin.register(Category)
@@ -21,3 +22,14 @@ class DirectorAdmin(admin.ModelAdmin):
 class ActorAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
+
+
+from django.contrib import admin
+from .models import ReleaseDate
+
+
+@admin.register(ReleaseDate)
+class ReleaseDateAdmin(admin.ModelAdmin):
+    list_display = ('id', 'year')
+    search_fields = ('year',)
+    ordering = ('-year',)
