@@ -18,7 +18,7 @@ class DirectorDetailAPIView(APIView):
     http_method_names = ['get']
 
     def get(self, request, director_id):
-        director = get_object_or_404(director, id=director_id)
+        director = get_object_or_404(Director, id=director_id)
         serializer = DirectorSerializer(director)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -29,7 +29,7 @@ class MoviesByDirectorAPIView(APIView):
     http_method_names = ['get']
 
     def get(self, request, director_id):
-        director = get_object_or_404(director, id=director_id)
+        director = get_object_or_404(Director, id=director_id)
         movies = Movie.objects.filter(director=director, is_active=True)
         serializer = MovieSerializer(movies, many=True)
 
