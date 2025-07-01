@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView, status, Response
 from rest_framework.permissions import AllowAny
 
-from relations.models.category import Category
 from movies.models import Movie
 from movies.serializers.movie_serializer import *
 from utils.pagination import CustomPagination
