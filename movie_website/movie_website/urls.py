@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apis.user_views.urls'),name='user_views'),
     path('api/v1/', include('apis.movie_apis.urls'),name='movie_apis'),
+    path('api/v1/', include('apis.relation_apis.urls'),name='relation_apis'),
 ]
 
 
