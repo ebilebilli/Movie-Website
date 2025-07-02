@@ -6,6 +6,7 @@ from models.user import CustomerUser
 
 __all__ = [
     'RegisterSerializer',
+    'LoginSerializer'
 ]
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -30,14 +31,12 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = CustomerUser.objects.create_user(
             email = validated_data['email'],
             username = validated_data['username'],
-            password=validated_data['password']
+            password=validated_data['password'],
+            birthday = validated_data.get('birthday'),
+            bio = validated_data.get('bio'),
+            profile_image = validated_data.get('profile_image')
         )
-    
-        user.birthday = validated_data.get('birthday')
-        user.bio = validated_data.get('bio')
-        user.profile_image = validated_data.get('profile_image')
-        user.save()
-
+        
         return user
 
 
