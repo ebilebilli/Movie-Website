@@ -2,7 +2,7 @@ from PIL import Image
 from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
 
-from movie_website.users.models.user import CustomerUser
+from users.models.user import CustomerUser
 
 
 __all__ = [
