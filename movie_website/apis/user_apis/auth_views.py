@@ -14,6 +14,8 @@ from users.serializers.auth_serializers import *
 
 __all__ = [
     'RegisterAPIView',
+    'LoginAPIView',
+    'LogoutAPIView'
 ]
 
 class RegisterAPIView(APIView):
