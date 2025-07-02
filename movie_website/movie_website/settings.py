@@ -155,3 +155,28 @@ if not GOOGLE_OAUTH_CLIENT_ID:
 
 SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
 SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
+
+#JWT settings
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=int(os.getenv('ACCESS_TOKEN_LIFETIME_MINUTES'))),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=int(os.getenv('REFRESH_TOKEN_LIFETIME_DAYS'))),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': os.getenv('JWT_ALGORITHM'),
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': (os.getenv('JWT_AUTH_HEADER_TYPE', 'Bearer'),),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    'JTI_CLAIM': 'jti',
+
+    # ⬇⬇⬇ ƏLAVƏLƏR ⬇⬇⬇
+    'AUTH_TOKEN_CLASSES': (
+        'rest_framework_simplejwt.tokens.AccessToken',
+        'rest_framework_simplejwt.tokens.RefreshToken',
+    ),
+    'TOKEN_BLACKLIST_ENABLED': True,
+}
