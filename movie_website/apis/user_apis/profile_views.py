@@ -11,6 +11,11 @@ from relations.models.actor import Actor
 from relations.serializers.actor_serializer import ActorSerializer
 
 
+__all__ = [
+    'ProfileDetailAPIView',
+    'ProfileUpdateAPIView'
+]
+
 class ProfileDetailAPIView(APIView):
     permission_classes = [AllowAny]
     http_method_names = ['get']

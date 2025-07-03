@@ -65,7 +65,7 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
         return data
         
     def update(self, actual, validated_data):
-        validated_data.pop('password_two')
+        validated_data.pop('password_two', None)
 
         actual.email = validated_data.get('email', actual.email)
         actual.username = validated_data.get('username', actual.username)
