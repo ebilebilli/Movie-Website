@@ -6,12 +6,12 @@ from users.models.user import CustomerUser
 
 
 __all__ = [
-    'CustomerUserSerializer',
-    'CustomerUserProfileDetail',
+    'ProfileSerializer',
+    'ProfileDetailSerializer',
     'ProfileUpdateSerializer'
 ]
 
-class CustomerUserSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomerUser
         exclude = ['id', 'bio', 'email', 'birthday']
@@ -33,15 +33,15 @@ class CustomerUserSerializer(serializers.ModelSerializer):
         return image
 
  
-class CustomerUserProfileDetail(serializers.ModelSerializer):
+class ProfileDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomerUser
         fields = '__all__'
 
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
-    password_two = serializers.CharField(write_only=True, required=True)
+    password = serializers.CharField(write_only=True, required=False, validators=[validate_password])
+    password_two = serializers.CharField(write_only=True, required=False)
 
     class Meta:
         model = CustomerUser
@@ -50,10 +50,18 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
             'password', 'password_two', 'birthday',
             'bio', 'profile_image'
             )
+        extra_kwargs = {
+            'email': {'required': False},
+            'username': {'required': False},
+            'birthday': {'required': False},
+            'bio': {'required': False},
+            'profile_image': {'required': False},
+        }
         
     def validate(self, data):
-        if data['password'] != data['password_two']:
-            raise serializers.ValidationError('Passwords must match')
+        if 'password' in data or 'password_two' in data:
+            if data['password'] != data['password_two']:
+                raise serializers.ValidationError('Passwords must match')
         return data
         
     def update(self, actual, validated_data):
