@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'movies',
     'users',
     'interactions',
+    'ai'
 ]
 
 
@@ -173,10 +174,12 @@ SIMPLE_JWT = {
     'TOKEN_TYPE_CLAIM': 'token_type',
     'JTI_CLAIM': 'jti',
 
-    # ⬇⬇⬇ ƏLAVƏLƏR ⬇⬇⬇
     'AUTH_TOKEN_CLASSES': (
         'rest_framework_simplejwt.tokens.AccessToken',
         'rest_framework_simplejwt.tokens.RefreshToken',
     ),
     'TOKEN_BLACKLIST_ENABLED': True,
 }
+
+# OpenAI
+OPENAI_TOKEN = os.getenv('OPENAI_TOKEN')
