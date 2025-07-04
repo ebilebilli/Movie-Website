@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models.like import Like
+from interactions.models.like import Like
 
 
 __all__ = [

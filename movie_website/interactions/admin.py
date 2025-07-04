@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .models import Bookmark
 from interactions.models.comment import Comment
 from interactions.models.like import Like
 
@@ -19,9 +20,19 @@ class CommentAdmin(admin.ModelAdmin):
         return obj.like_count
     like_count.short_description = 'Likes'
 
+
 @admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'comment', 'created_at')
     list_filter = ('created_at', 'user')
     search_fields = ('user__username', 'comment__text')
+    readonly_fields = ('created_at',)
+
+
+@admin.register(Bookmark)
+class BookmarkAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'movie', 'created_at')
+    list_filter = ('created_at', 'user')
+    search_fields = ('user__username', 'movie__title')
+    ordering = ('-created_at',)
     readonly_fields = ('created_at',)

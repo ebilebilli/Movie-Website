@@ -1,19 +1,25 @@
 from django.urls import path
 
-from apis.movie_apis.movie_views import *
+from apis.interaction_apis.bookmark_views import *
 
 
-app_name = 'movie_apis'
+app_name = 'interaction_apis'
 
 urlpatterns = [
+    # Bookmark endpoints
     path(
-        'movies/', 
-        MovieListAPIView.as_view(), 
-        name='movies'
+        'bookmarks/', 
+        BookmarkListAPIView.as_view(), 
+        name='bookmarks'
         ),
     path(
-        'movies/<slug:slug>/', 
-        MovieDetailAPIView.as_view(), 
-        name='movie-detail'
+        'movie/<slug:slug>/bookmark/', 
+        AddBookmarkAPIView.as_view(), 
+        name='post-bookmark'
+        ),
+    path(
+        'bookmark/<int:bookmark_id>/', 
+        DeleteBookmarkAPIView.as_view(), 
+        name='delete-bookmark'
         )  
 ]

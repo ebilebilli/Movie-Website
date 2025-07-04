@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models.comment import Comment
+from interactions.models.comment import Comment
 
 
 __all__ = [

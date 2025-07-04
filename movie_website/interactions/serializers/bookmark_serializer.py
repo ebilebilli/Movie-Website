@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from movie_website.interactions.models.bookmark import Bookmark
+from interactions.models.bookmark import Bookmark
 from movies.serializers.movie_serializer import MovieSerializer
 
 
