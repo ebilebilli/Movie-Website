@@ -12,13 +12,13 @@ from utils.pagination import CustomPagination
 
 
 __all__ = [
-    'BookmarkListByUserAPIView',
+    'BookmarkListAPIView',
     'AddBookmarkAPIView',
     'DeleteBookmarkAPIView'
 ]
 
 
-class BookmarkListByUserAPIView(APIView):
+class BookmarkListAPIView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
     pagination_class = CustomPagination
@@ -38,8 +38,8 @@ class AddBookmarkAPIView(APIView):
     permission_classes = [IsAuthenticated]
     http_method_names = ['post']
 
-    def post(self, request, movie_id):
-        movie = get_object_or_404(Movie.objects.filter(is_active=True), id=movie_id)
+    def post(self, request, slug):
+        movie = get_object_or_404(Movie.objects.filter(is_active=True), slug=slug)
         serializer = BookmarkSerializer(data=request.data, context={
             'request': request,
             'movie': movie
