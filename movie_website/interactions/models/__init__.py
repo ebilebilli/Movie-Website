@@ -1,3 +1,3 @@
 from .comment import *
 from .like import *
-from .watchlist import *
+from .bookmark import *

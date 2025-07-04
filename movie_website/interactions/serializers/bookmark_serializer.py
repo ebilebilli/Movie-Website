@@ -1,18 +1,18 @@
 from rest_framework import serializers
 
-from models.watchlist import Watchlist
+from movie_website.interactions.models.bookmark import Bookmark
 from movies.serializers.movie_serializer import MovieSerializer
 
 
 __all__ = [
-    'WatchlistSerializer',
+    'BookmarkSerializer',
 ]
 
-class WatchlistSerializer(serializers.ModelSerializer):
+class BookmarkSerializer(serializers.ModelSerializer):
     movie = MovieSerializer()
     
     class Meta:
-        model = Watchlist
+        model = Bookmark
         fields = ['id',]
         read_only_fields = ['id', 'created_at']
     
