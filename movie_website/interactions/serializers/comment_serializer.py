@@ -13,12 +13,12 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['id', 'text', 'parent', 'created_at', 'updated_at', 'like_count']
-        read_only_fields = ['id', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'parent', 'created_at', 'updated_at']
     
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
-        validated_data['movie'] = self.context['movie']
-        validated_data['parent'] = self.context['parent']
+        validated_data['movie'] = self.context.get('movie')
+        validated_data['parent'] = self.context.get('parent')
         return super().create(validated_data)
 
     def get_like_count(self, obj):

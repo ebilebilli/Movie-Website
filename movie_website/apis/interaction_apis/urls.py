@@ -36,7 +36,7 @@ urlpatterns = [
         ),
     path(
         'comment/<int:comment_id>/', 
-        DeleteCommentAPIView.as_view(), 
-        name='movie-delete-comment'
-        )      
+        CommentDetailAPIView.as_view(), 
+        name='comment-detail'
+        ),   
 ]
