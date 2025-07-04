@@ -6,6 +6,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from movies.models import Movie
+from users.models import CustomerUser
 from interactions.models.comment import Comment
 from interactions.serializers.comment_serializer import CommentSerializer
 from utils.pagination import CustomPagination
@@ -13,6 +14,7 @@ from utils.pagination import CustomPagination
 
 __all__ = [
     'CommentListByMovieAPIView',
+    'CommentListByUserAPIView',
     'AddCommentAPIView',
     'CommentDetailAPIView',
 ]
@@ -26,6 +28,22 @@ class CommentListByMovieAPIView(APIView):
         pagination = self.pagination_class()
         movie = get_object_or_404(Movie.objects.filter(is_active=True), slug=slug)
         comments = Comment.objects.filter(movie=movie)
+        paginator = pagination.paginate_queryset(comments, request)
+        serializer = CommentSerializer(paginator, many=True)
+
+        return pagination.get_paginated_response(serializer.data)
+
+
+class CommentListByUserAPIView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    pagination_class = CustomPagination
+    http_method_names = ['get']
+
+    def get(self, request):
+        user = request.user
+        pagination = self.pagination_class()
+        comments = Comment.objects.filter(user=user)
         paginator = pagination.paginate_queryset(comments, request)
         serializer = CommentSerializer(paginator, many=True)
 

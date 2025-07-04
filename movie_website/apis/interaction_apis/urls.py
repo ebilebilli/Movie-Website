@@ -31,6 +31,11 @@ urlpatterns = [
         name='comments'
         ),
     path(
+        'comments/', 
+        CommentListByUserAPIView.as_view(), 
+        name='my-comments'
+        ),
+    path(
         'movie/<slug:slug>/comment/', 
         AddCommentAPIView.as_view(), 
         name='movie-add-comment'
@@ -41,7 +46,7 @@ urlpatterns = [
         name='comment-detail'
         ),
     path(
-        'comment/<int:comment_id>/like', 
+        'comment/<int:comment_id>/like/', 
         AddLikeAPIView.as_view(), 
         name='comment-add-like'
         ),
