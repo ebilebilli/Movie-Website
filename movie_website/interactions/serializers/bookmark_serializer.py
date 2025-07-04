@@ -9,12 +9,12 @@ __all__ = [
 ]
 
 class BookmarkSerializer(serializers.ModelSerializer):
-    movie = MovieSerializer()
+    movie = MovieSerializer(read_only=True)
     
     class Meta:
         model = Bookmark
-        fields = ['id',]
-        read_only_fields = ['id', 'created_at']
+        fields = ['id', 'movie']
+        read_only_fields = ['id', 'movie', 'created_at']
     
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
