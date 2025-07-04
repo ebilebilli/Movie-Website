@@ -35,8 +35,8 @@ urlpatterns = [
         name='movie-add-comment'
         ),
     path(
-        'bookmark/<int:bookmark_id>/', 
-        DeleteBookmarkAPIView.as_view(), 
-        name='movie-delete-bookmark'
+        'comment/<int:comment_id>/', 
+        DeleteCommentAPIView.as_view(), 
+        name='movie-delete-comment'
         )      
 ]
