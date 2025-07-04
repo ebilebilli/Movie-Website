@@ -18,6 +18,7 @@ class CommentSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
         validated_data['movie'] = self.context['movie']
+        validated_data['parent'] = self.context['parent']
         return super().create(validated_data)
 
     def get_like_count(self, obj):
