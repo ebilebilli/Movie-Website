@@ -6,7 +6,6 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from movies.models import Movie
-from users.models import CustomerUser
 from interactions.models.comment import Comment
 from interactions.serializers.comment_serializer import CommentSerializer
 from utils.pagination import CustomPagination

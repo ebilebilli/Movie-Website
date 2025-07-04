@@ -7,8 +7,6 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from users.models.user import CustomerUser
 from users.serializers.user_serializers import *
-from relations.models.actor import Actor
-from relations.serializers.actor_serializer import ActorSerializer
 
 
 __all__ = [
