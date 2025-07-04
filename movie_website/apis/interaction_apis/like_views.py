@@ -11,9 +11,9 @@ from interactions.serializers.like_serializer import LikeSerializer
 
 
 __all__ = [
-    'CommentListByMovieAPIView',
-    'AddCommentAPIView',
-    'CommentDetailAPIView',
+    'AddLikeAPIView',
+    'DeleteLikeAPIView',
+
 ]
 
 class AddLikeAPIView(APIView):

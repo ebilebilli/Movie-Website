@@ -2,6 +2,7 @@ from django.urls import path
 
 from apis.interaction_apis.bookmark_views import *
 from apis.interaction_apis.comment_views import *
+from apis.interaction_apis.like_views import *
 
 
 app_name = 'interaction_apis'
@@ -38,5 +39,15 @@ urlpatterns = [
         'comment/<int:comment_id>/', 
         CommentDetailAPIView.as_view(), 
         name='comment-detail'
-        ),   
+        ),
+    path(
+        'comment/<int:comment_id>/like', 
+        AddLikeAPIView.as_view(), 
+        name='comment-add-like'
+        ),
+    path(
+        'like/<int:like_id>/', 
+        DeleteLikeAPIView.as_view(), 
+        name='comment-delete-like'
+        ),
 ]
