@@ -10,12 +10,12 @@ app_name = 'user_apis'
 urlpatterns = [
     #Google endpoints
     path(
-        'sign-in/', 
+        'google/client-id/', 
         GoogleAuthClientIDAPIView.as_view(),
         name='sign_in'
         ),
     path(
-        'google-auth/',
+        'google/auth/',
         GoogleAuthAPIView.as_view() , 
         name='google-auth'
         ),
