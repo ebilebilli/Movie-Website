@@ -73,7 +73,8 @@ class CommentDetailAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, comment_id):
-        comment = get_object_or_404(Comment.objects.filter(user=request.user), id=comment_id)
+        user = request.user
+        comment = get_object_or_404(Comment.objects.filter(user=user).first(), id=comment_id)
         comment.delete()
         
         return Response(status=status.HTTP_204_NO_CONTENT)

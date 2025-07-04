@@ -24,3 +24,6 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_like_count(self, obj):
         return obj.like_count
     
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        return {k: v for k, v in rep.items() if v is not None}
