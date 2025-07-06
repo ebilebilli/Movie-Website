@@ -28,5 +28,5 @@ class ChatAIAPIView(APIView):
         else:
             message = f'Sorry, there is not such movie on our website'
 
-        ai_response = generate_ai_response_task(question=question, message=message)
+        ai_response = generate_ai_response_task.delay(question=question, message=message)
         return Response(ai_response, status=status.HTTP_200_OK)
