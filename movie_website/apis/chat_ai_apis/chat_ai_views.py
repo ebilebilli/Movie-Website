@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from celery.result import AsyncResult
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -9,10 +9,11 @@ from chat_ai.tasks import generate_ai_response_task
 
 
 __all__ = [
-    'ChatAIAPIView'
+    'ChatAITaskRequestAPIView',
+    'ChatAITaskResponseAPIView'
 ]
 
-class ChatAIAPIView(APIView):
+class ChatAITaskRequestAPIView(APIView):
     permission_classes = [AllowAny]
     http_method_names = ['post']
 
@@ -28,5 +29,17 @@ class ChatAIAPIView(APIView):
         else:
             message = f'Sorry, there is not such movie on our website'
 
-        ai_response = generate_ai_response_task.delay(question=question, message=message)
-        return Response(ai_response, status=status.HTTP_200_OK)
+        task  = generate_ai_response_task.delay(question=question, message=message)
+        return Response({'task_id': task.id}, status=status.HTTP_200_OK)
+
+
+class ChatAITaskResponseAPIView(APIView):
+    permission_classes = [AllowAny]
+    http_method_names = ['get']
+
+    def get(self, request, task_id):
+        task_result = AsyncResult(task_id)
+        if task_result.ready():
+            return Response({'result': task_result.get()}, status=200)
+         
+        return Response({'status': 'processing'}, status=202)
