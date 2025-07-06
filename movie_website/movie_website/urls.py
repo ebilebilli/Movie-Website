@@ -11,7 +11,8 @@ urlpatterns = [
     path('api/v1/', include('apis.movie_apis.urls'),name='movie_apis'),
     path('api/v1/', include('apis.relation_apis.urls'),name='relation_apis'),
     path('api/v1/', include('apis.interaction_apis.urls'),name='interaction_apis'),
-]
+    path('api/v1/', include('apis.chat_ai_apis.urls'),name='chat_ai_apis'),
 
+]
 
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

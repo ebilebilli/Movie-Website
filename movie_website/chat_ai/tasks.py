@@ -1,5 +1,4 @@
 import openai
-from celery import shared_task
 from django.conf import settings
 
 openai.api_key = settings.OPENAI_TOKEN
@@ -9,7 +8,7 @@ def generate_ai_response_task(question, message):
     prompt = f'Question of user: {question}\nAnswer find in database: {message}\nGive simple and clear answer.'
 
     try:
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {'role': 'system', 'content': 'You are movie website.'},

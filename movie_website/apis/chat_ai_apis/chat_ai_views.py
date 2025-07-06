@@ -9,7 +9,11 @@ from users.models.user import CustomerUser
 from chat_ai.tasks import generate_ai_response_task
 
 
-class MovieQueryRequestToAIAPIView(APIView):
+__all__ = [
+    'ChatAIAPIView'
+]
+
+class ChatAIAPIView(APIView):
     permission_classes = [AllowAny]
     http_method_names = ['post']
 

@@ -12,7 +12,7 @@ urlpatterns = [
     path(
         'google/client-id/', 
         GoogleAuthClientIDAPIView.as_view(),
-        name='sign_in'
+        name='sign-in'
         ),
     path(
         'google/auth/',
