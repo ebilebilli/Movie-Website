@@ -15,8 +15,7 @@ def generate_ai_response_task(question, message):
     Question of user: {question}
     \nAnswer find in database: {message}
     \nGive simple and clear answer
-    \nOur site currently has {movie_count} active movie'
-
+    \nOur site currently has {movie_count} active movie
     """
     try:
         response = openai.chat.completions.create(
