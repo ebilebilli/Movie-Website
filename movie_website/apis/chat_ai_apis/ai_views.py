@@ -6,7 +6,7 @@ from rest_framework.permissions import AllowAny
 
 from movies.models.movie import Movie
 from users.models.user import CustomerUser
-from ai.tasks import generate_ai_response_task
+from chat_ai.tasks import generate_ai_response_task
 
 
 class MovieQueryRequestToAIAPIView(APIView):

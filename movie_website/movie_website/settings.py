@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'movies',
     'users',
     'interactions',
-    'ai'
+    'chat_ai'
 ]
 
 
