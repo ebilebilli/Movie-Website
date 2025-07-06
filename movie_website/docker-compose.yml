@@ -71,6 +71,8 @@ services:
 
   db:
     image: postgres:15
+    env_file:
+      - .env
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -101,6 +103,10 @@ services:
       timeout: 3s
       retries: 5
 
+volumes:
+  postgres_data:
+
 networks:
   default:
     driver: bridge
+
