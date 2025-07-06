@@ -32,7 +32,6 @@ kombu = "==5.4.2"
 packaging = "==24.2"
 pillow = "==11.1.0"
 prompt-toolkit = "==3.0.50"
-psycopg2-binary = "==2.9.10"
 pyasn1 = "==0.6.1"
 pyasn1-modules = "==0.4.2"
 pycparser = "==2.22"
@@ -58,6 +57,7 @@ python-dotenv = "*"
 openai = "*"
 celery = "*"
 gunicorn = "==21.2.0"
+psycopg2-binary = "*"
 
 [dev-packages]
 
