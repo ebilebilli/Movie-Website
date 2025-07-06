@@ -7,8 +7,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.db.models import Q, Avg
-from django.db.models.functions import Coalesce
 from django.core.cache import cache
 
 from movies.models import Movie
@@ -18,7 +16,8 @@ from utils.pagination import CustomPagination
 
 __all__ = [
     'MovieListAPIView',
-    'MovieDetailAPIView'
+    'MovieDetailAPIView',
+    'SearchAPIView'
 ]
 
 class MovieListAPIView(APIView):
