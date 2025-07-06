@@ -5,7 +5,6 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 
 from movies.models.movie import Movie
-from users.models.user import CustomerUser
 from chat_ai.tasks import generate_ai_response_task
 
 
