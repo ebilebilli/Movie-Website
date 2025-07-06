@@ -9,7 +9,7 @@ from movies.models.movie import Movie
 from movies.serializers.movie_serializer import MovieSerializer
 from relations.models.actor import Actor
 from relations.serializers.actor_serializer import ActorSerializer
-from utils.timeout import ONE_DAY, TWELVE_HOURS
+from utils.timeout import ONE_WEEK, ONE_DAY
 
 
 __all__ = [
@@ -29,7 +29,7 @@ class ActorDetailAPIView(APIView):
 
         actor = get_object_or_404(Actor, id=actor_id)
         serializer = ActorSerializer(actor)
-        cache.set(cache_key, serializer.data, timeout=ONE_DAY)
+        cache.set(cache_key, serializer.data, timeout=ONE_WEEK)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -47,6 +47,6 @@ class MoviesByActorAPIView(APIView):
         actor = get_object_or_404(Actor, id=actor_id)
         movies = Movie.objects.filter(actors=actor, is_active=True)
         serializer = MovieSerializer(movies, many=True)
-        cache.set(cache_key, serializer.data, timeout=TWELVE_HOURS)
+        cache.set(cache_key, serializer.data, timeout=ONE_DAY)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
