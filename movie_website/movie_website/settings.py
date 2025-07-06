@@ -224,4 +224,3 @@ CACHES = {
     }
 }
 
-TIMEOUT = int(os.getenv('TIMEOUT'))
