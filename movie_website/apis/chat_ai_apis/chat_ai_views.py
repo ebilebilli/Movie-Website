@@ -10,7 +10,8 @@ from chat_ai.tasks import generate_ai_response_task
 
 __all__ = [
     'ChatAITaskRequestAPIView',
-    'ChatAITaskResponseAPIView'
+    'ChatAITaskResponseAPIView',
+    'TestURLView'
 ]
 
 class ChatAITaskRequestAPIView(APIView):
@@ -44,3 +45,4 @@ class ChatAITaskResponseAPIView(APIView):
             return Response({'result': task_result.get()}, status=200)
          
         return Response({'status': 'processing'}, status=202)
+    

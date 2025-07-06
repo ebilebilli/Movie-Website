@@ -15,5 +15,5 @@ urlpatterns = [
         'chat/response/', 
         ChatAITaskResponseAPIView.as_view(), 
         name='chat-ai-response'
-        )
+        ),
 ]
