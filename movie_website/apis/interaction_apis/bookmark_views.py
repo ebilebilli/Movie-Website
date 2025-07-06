@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from movies.models import Movie
+from movies.models.movie import Movie
 from interactions.models.bookmark import Bookmark
 from interactions.serializers.bookmark_serializer import BookmarkSerializer
 from utils.pagination import CustomPagination

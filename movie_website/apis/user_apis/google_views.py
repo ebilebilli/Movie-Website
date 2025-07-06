@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import AllowAny
 from rest_framework import status
 from google.oauth2 import id_token
 from google.auth.transport import requests
@@ -15,6 +16,9 @@ __all__ = [
 ]
 
 class GoogleAuthClientIDAPIView(APIView):
+    permission_classes = [AllowAny]
+    http_method_names = ['get']
+
     def get(self, request):
         return Response(
             {"google_client_id": settings.GOOGLE_OAUTH_CLIENT_ID},
@@ -23,6 +27,9 @@ class GoogleAuthClientIDAPIView(APIView):
     
 
 class GoogleAuthAPIView (APIView):
+    permission_classes = [AllowAny]
+    http_method_names = ['post']
+    
     def post(self, request):
         token = request.data.get('credential')
         if not token:
