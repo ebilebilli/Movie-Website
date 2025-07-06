@@ -24,7 +24,7 @@ class ChatAITaskRequestAPIView(APIView):
         
         find_movie = Movie.objects.filter(title__icontains=question, is_active=True).first()
         if find_movie:
-            movie_url = request.build_absolute_uri(f'api/v1/movies/{find_movie.slug}/')
+            movie_url = request.build_absolute_uri(f'/api/v1/movies/{find_movie.slug}/')
             message = f'{find_movie} is active on our website\nThere is url for movie: {movie_url}'
         
         else:
