@@ -135,6 +135,7 @@ GET  /api/v1/auth/google/client-id/  # Get Google client ID
 
 GET /api/v1/movies/             # List all movies
 GET /api/v1/movies/{slug}/      # Movie details
+GET /api/v1/search/             # Search movies
 ```
 
 ### Social Features
