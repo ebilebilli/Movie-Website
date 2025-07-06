@@ -1,8 +1,8 @@
 # 🎬 Movie Website - Django REST API
 
-A Django-based movie streaming platform with AI chat, user authentication, and social features.
+A comprehensive Django-based movie streaming platform featuring AI-powered chat recommendations, secure JWT authentication with Google OAuth integration, social features including threaded comments and bookmarks, Docker containerization, PostgreSQL database with Redis caching, and Celery background task processing for scalable performance.
 
-## �� Technology Stack
+## 🛠 Technology Stack
 
 ### 🎯 Backend
 ![Django](https://img.shields.io/badge/Django-5.2-092E20?style=for-the-badge&logo=django)
