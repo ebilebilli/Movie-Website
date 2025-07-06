@@ -7,11 +7,11 @@ from movie_website.settings import MEDIA_URL, MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('apis.user_apis.urls'),name='user_apis'),
-    path('api/v1/', include('apis.movie_apis.urls'),name='movie_apis'),
-    path('api/v1/', include('apis.relation_apis.urls'),name='relation_apis'),
-    path('api/v1/', include('apis.interaction_apis.urls'),name='interaction_apis'),
-    path('api/v1/', include('apis.chat_ai_apis.urls'),name='chat_ai_apis'),
+    path('api/v1/', include('apis.user_apis.urls')),
+    path('api/v1/', include('apis.movie_apis.urls')),
+    path('api/v1/', include('apis.relation_apis.urls')),
+    path('api/v1/', include('apis.interaction_apis.urls')),
+    path('api/v1/', include('apis.chat_ai_apis.urls')),
 
 ]
 
