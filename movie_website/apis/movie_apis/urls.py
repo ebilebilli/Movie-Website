@@ -17,7 +17,7 @@ urlpatterns = [
         name='movie-detail'
         ),
     path(
-        'search/', 
+        'movies/search/', 
         SearchAPIView.as_view(),
         name='search'
     ),
