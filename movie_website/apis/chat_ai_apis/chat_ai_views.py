@@ -11,7 +11,6 @@ from chat_ai.tasks import generate_ai_response_task
 __all__ = [
     'ChatAITaskRequestAPIView',
     'ChatAITaskResponseAPIView',
-    'TestURLView'
 ]
 
 class ChatAITaskRequestAPIView(APIView):
