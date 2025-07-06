@@ -212,3 +212,16 @@ REDIS_POOL = redis.ConnectionPool(
 )
 
 REDIS_CLIENT = redis.Redis(connection_pool=REDIS_POOL)
+
+# Caches settings
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': f"redis://{os.getenv('REDIS_HOST')}:{os.getenv('REDIS_PORT')}/{os.getenv('REDIS_DB')}",
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+TIMEOUT = int(os.getenv('TIMEOUT'))
