@@ -57,6 +57,7 @@ dotenv = "*"
 python-dotenv = "*"
 openai = "*"
 celery = "*"
+gunicorn = "==21.2.0"
 
 [dev-packages]
 
