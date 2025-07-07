@@ -15,7 +15,7 @@ urlpatterns = [
         name='bookmarks'
         ),
     path(
-        'movie/<slug:slug>/bookmark/', 
+        'movies/<slug:slug>/bookmark/', 
         AddBookmarkAPIView.as_view(), 
         name='movie-add-bookmark'
         ),
@@ -26,7 +26,7 @@ urlpatterns = [
         ),
     # Comment endpoints
     path(
-        'movie/<slug:slug>/comments/', 
+        'movies/<slug:slug>/comments/', 
         CommentListByMovieAPIView.as_view(), 
         name='comments'
         ),
@@ -36,7 +36,7 @@ urlpatterns = [
         name='my-comments'
         ),
     path(
-        'movie/<slug:slug>/comment/', 
+        'movies/<slug:slug>/comment/', 
         AddCommentAPIView.as_view(), 
         name='movie-add-comment'
         ),

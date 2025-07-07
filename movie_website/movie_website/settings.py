@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'movie_website.wsgi.application'
 
 
 
-# Database PostgreSQL
+# Database(PostgreSQL) configuration
 
 DATABASES = {
     'default': {
@@ -126,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-#Media / Static settings
+#Media / Static configuration
 MEDIA_ROOT = os.getenv('MEDIA_ROOT')
 MEDIA_URL = os.getenv('MEDIA_URL')
 
@@ -158,7 +158,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Google Sign-In  settings
+# Google Sign-In configuration
 GOOGLE_OAUTH_CLIENT_ID = os.environ.get('GOOGLE_OAUTH_CLIENT_ID')
 if not GOOGLE_OAUTH_CLIENT_ID:
     raise ValueError('GOOGLE_OAUTH_CLIENT_ID is missing.''Have you put it in a file at core/.env ?')
@@ -166,7 +166,7 @@ if not GOOGLE_OAUTH_CLIENT_ID:
 SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
 SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
 
-#JWT settings
+# JWT configuration
 from datetime import timedelta
 
 SIMPLE_JWT = {
@@ -193,13 +193,13 @@ SIMPLE_JWT = {
 # OpenAI
 OPENAI_TOKEN = os.getenv('OPENAI_TOKEN')
 
-# Celery settings
+# Celery configuration
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 CELERY_IGNORE_RESULT = True
 CELERY_TIMEZONE = 'UTC'
 
-# Redis settings
+# Redis configuration
 REDIS_HOST = os.getenv('REDIS_HOST', 'redis')         
 REDIS_PORT = os.getenv('REDIS_PORT')
 REDIS_DB = os.getenv('REDIS_DB')
@@ -213,7 +213,7 @@ REDIS_POOL = redis.ConnectionPool(
 
 REDIS_CLIENT = redis.Redis(connection_pool=REDIS_POOL)
 
-# Caches settings
+# Caches configuration
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
@@ -224,3 +224,14 @@ CACHES = {
     }
 }
 
+# Swagger configuration
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+        }
+    },
+    "USE_SESSION_AUTH": False,  
+}

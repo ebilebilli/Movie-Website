@@ -25,7 +25,6 @@ django-redis = "==5.4.0"
 djangorestframework = "==3.16.0"
 djangorestframework-simplejwt = "==5.5.0"
 docker = "==7.1.0"
-drf-yasg = "==1.21.8"
 idna = "==3.10"
 inflection = "==0.5.1"
 kombu = "==5.4.2"
@@ -58,6 +57,7 @@ openai = "*"
 celery = "*"
 gunicorn = "==21.2.0"
 psycopg2-binary = "*"
+drf-yasg = "*"
 
 [dev-packages]
 
